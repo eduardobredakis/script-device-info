@@ -6,7 +6,9 @@ from uuid import getnode as get_mac
 #Operating System Version
 os_name = platform.system()
 os_version = platform.release()
-print(f"Your Operating System is: {os_name} {os_version}")
+os_detailed_info = platform.platform()
+print(f"Your Operating System is: {os_name} {os_version} {os_detailed_info}")
+print(f"The detailed version of your {os_name} {os_version} are {os_detailed_info}")
 
 #Device SerialNumber
 current_machine_id = subprocess.check_output('wmic bios get serialnumber').decode("utf-8") 

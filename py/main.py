@@ -1,10 +1,25 @@
+
 import platform
 import psutil
 import subprocess
 from uuid import getnode as get_mac
+from getmac import get_mac_address as gma
 import os
 
-
+def email_input():
+    email = input("Enter your KIS email: ")
+    print("You entered: ", email)
+    check = input("Please, confirm your email: ")
+    
+    if check == (email):
+        print("thanks")
+    else:
+        print("Your email dont match")
+        email = input("Enter your KIS email again, please: ")
+        print("You entered: ", email)
+        check = input("Please, confirm your email: ")
+        
+email_input()
 
 #Get device people name
 os_get_username = os.environ.get('USERNAME')
@@ -30,6 +45,3 @@ memory_amount = round(psutil.virtual_memory().total/1000000000, 2)
 memory_amount_used = round(psutil.virtual_memory().used/1000000000, 2)
 print(f"Total RAM installed: {memory_amount}")
 print(f"Total Used Ram: {memory_amount_used}")
-
-
-

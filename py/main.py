@@ -7,7 +7,7 @@ from getmac import get_mac_address as gma
 import os
 import csv
 
-def email_input():
+def deviceInfo():
     #Check kiss email   
     email = input("Enter your KIS email: ")
     print("You entered: ", email)
@@ -19,7 +19,7 @@ def email_input():
         print("You entered: ", email)
         check = input("is this email correct? (yes/no): ")
         
-    
+    # Get asset tag 
     asset = input("Your device have a asset tag? (yes/no): ")
     if asset == ("yes"):
         input_asset = input("Whats your asset tag number? ")
@@ -48,9 +48,9 @@ def email_input():
     #Create CSV File Data
     with open('aCsv.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow([email, os_get_username, os_name, current_machine_id, asset])      
+        writer.writerow([email, os_get_username, os_name, current_machine_id, input_asset])      
         
-email_input()
+deviceInfo()
 
 #Todo list on script
 #Mudar checagem de email para sim ou nao - done

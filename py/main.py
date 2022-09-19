@@ -1,5 +1,4 @@
 
-import email
 import platform
 import psutil
 import subprocess
@@ -8,21 +7,25 @@ from getmac import get_mac_address as gma
 import os
 import csv
 
-
 def email_input():
-    #Check kiss email
+    #Check kiss email   
     email = input("Enter your KIS email: ")
     print("You entered: ", email)
-    check = input("Please, confirm your email: ")
-    
-    if check == (email):
-        print("thanks")
-    else:
-        print("Your email dont match")
+    check = input("is this email correct? (yes/no): ")
+    if check == ("yes"):
+        print("thanks")    
+    elif check == ("no"):
         email = input("Enter your KIS email again, please: ")
         print("You entered: ", email)
-        check = input("Please, confirm your email: ")
+        check = input("is this email correct? (yes/no): ")
         
+    
+    asset = input("Your device have a asset tag? (yes/no): ")
+    if asset == ("yes"):
+        input_asset = input("Whats your asset tag number? ")
+        print("Your device asset tag are: ", input_asset)
+    
+
     #Get device people name
     os_get_username = os.environ.get('USERNAME')
     print(f"Your username: {os_get_username}")
@@ -41,18 +44,15 @@ def email_input():
     #IP Addres
     mac = get_mac()
     print(f"Your device Addres are: {(hex(mac))}")
-
-    #Device amount of RAM installed and Used
-    memory_amount = round(psutil.virtual_memory().total/1000000000, 2)
-    memory_amount_used = round(psutil.virtual_memory().used/1000000000, 2)
-    print(f"Total RAM installed: {memory_amount}")
-    print(f"Total Used Ram: {memory_amount_used}")
-
+    
     #Create CSV File Data
     with open('aCsv.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow([email, os_get_username, os_name,current_machine_id]) 
+        writer.writerow([email, os_get_username, os_name, current_machine_id, asset])      
         
 email_input()
 
-
+#Todo list on script
+#Mudar checagem de email para sim ou nao - done
+#tentar pegar numero de modelo do notebok
+#Perguntar se possui asset tag, se possuir a pessoa coloca, se nao a pessoa skipa essa parte - done

@@ -44,6 +44,10 @@ def deviceInfo():
     mac = get_mac()
     print(f"Your device Addres are: {(hex(mac))}")
     
+    #Create CSV File Data
+    with open('aCsv.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow([email, os_get_username, os_name, current_machine_id, input_asset]) 
 deviceInfo()
 
 #Todo list on script

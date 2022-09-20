@@ -1,6 +1,4 @@
-
 import platform
-import psutil
 import subprocess
 from uuid import getnode as get_mac
 from getmac import get_mac_address as gma
@@ -48,9 +46,5 @@ def deviceInfo():
     with open('aCsv.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow([email, os_get_username, os_name, current_machine_id, input_asset]) 
+        
 deviceInfo()
-
-#Todo list on script
-#Mudar checagem de email para sim ou nao - done
-#tentar pegar numero de modelo do notebok
-#Perguntar se possui asset tag, se possuir a pessoa coloca, se nao a pessoa skipa essa parte - done
